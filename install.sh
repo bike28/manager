@@ -10,8 +10,8 @@ fi
 echo "Installing Amokhan Manager..."
 
 # URLs (IPv4 forced to avoid GitHub IPv6 issues)
-MENU_URL="https://codeberg.org/DEX-OS7/x/raw/branch/main/menu.sh"
-SSHD_URL="https://codeberg.org/DEX-OS7/x/raw/branch/main/ssh"
+MENU_URL="https://raw.githubusercontent.com/bike28/manager/main/menu.sh"
+SSHD_URL="https://raw.githubusercontent.com/bike28/manager/main/ssh"
 
 # Helper to download files (supports both curl and wget)
 download_file() {
