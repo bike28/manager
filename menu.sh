@@ -1961,10 +1961,10 @@ install_udp_custom() {
     arch=$(uname -m)
     local binary_url=""
     if [[ "$arch" == "x86_64" ]]; then
-        binary_url="https://github.com/firewallfalcons/firewallfalcon-Manager/raw/main/udp/udp-custom-linux-amd64"
+        binary_url="https://raw.githubusercontent.com/bike28/manager/main/udp/udp-custom-linux-amd64"
         echo -e "${C_BLUE}ℹ️ Detected x86_64 (amd64) architecture.${C_RESET}"
     elif [[ "$arch" == "aarch64" || "$arch" == "arm64" ]]; then
-        binary_url="https://github.com/firewallfalcons/firewallfalcon-Manager/raw/main/udp/udp-custom-linux-arm"
+        binary_url="https://raw.githubusercontent.com/bike28/managermain/udp/udp-custom-linux-arm"
         echo -e "${C_BLUE}ℹ️ Detected ARM64 architecture.${C_RESET}"
     else
         echo -e "\n${C_RED}❌ Unsupported architecture: $arch. Cannot install udp-custom.${C_RESET}"
@@ -1982,7 +1982,7 @@ install_udp_custom() {
     chmod +x "$UDP_CUSTOM_DIR/udp-custom"
 
     echo -e "\n${C_GREEN}📦 Downloading udpgw helper...${C_RESET}"
-    wget -q --show-progress -O "$UDPGW_BINARY" "https://raw.githubusercontent.com/http-custom/udp-custom/main/module/udpgw"
+    wget -q --show-progress -O "$UDPGW_BINARY" "https://raw.githubusercontent.com/bike28/manager/main/module/udpgw"
     if [ $? -ne 0 ]; then
         echo -e "\n${C_RED}❌ Failed to download the udpgw helper binary.${C_RESET}"
         rm -rf "$UDP_CUSTOM_DIR"
@@ -3095,7 +3095,7 @@ install_falcon_proxy() {
     fi
 
     echo -e "\n${C_BLUE}🌐 Fetching available versions from GitHub...${C_RESET}"
-    local releases_json=$(curl -s "https://api.github.com/repos/firewallfalcons/firewallfalcon-Manager/releases")
+    local releases_json=$(curl -s "https://api.github.com/repos/bike28/manager/releases")
     if [[ -z "$releases_json" || "$releases_json" == "[]" ]]; then
         echo -e "${C_RED}❌ Error: Could not fetch releases. Check internet or API limits.${C_RESET}"
         return
@@ -3160,7 +3160,7 @@ install_falcon_proxy() {
     fi
     
     # Construct download URL based on selected version
-    local download_url="https://github.com/firewallfalcons/firewallfalcon-Manager/releases/download/$SELECTED_VERSION/$binary_name"
+    local download_url="https://github.com/bike28/manager/releases/download/$SELECTED_VERSION/$binary_name"
 
     echo -e "\n${C_GREEN}📥 Downloading amokhan proxy $SELECTED_VERSION ($binary_name)...${C_RESET}"
     wget -q --show-progress -O "$FALCONPROXY_BINARY" "$download_url"
@@ -3246,13 +3246,13 @@ install_zivpn() {
     local zivpn_url=""
     
     if [[ "$arch" == "x86_64" ]]; then
-        zivpn_url="https://github.com/zahidbd2/udp-zivpn/releases/download/udp-zivpn_1.4.9/udp-zivpn-linux-amd64"
+        zivpn_url="https://raw.githubusercontent.com/bike28/manager/main/module/udp-zivpn-linux-arm64"
         echo -e "${C_BLUE}ℹ️ Detected AMD64/x86_64 architecture.${C_RESET}"
     elif [[ "$arch" == "aarch64" ]]; then
-        zivpn_url="https://github.com/zahidbd2/udp-zivpn/releases/download/udp-zivpn_1.4.9/udp-zivpn-linux-arm64"
+        zivpn_url="https://raw.githubusercontent.com/bike28/manager/main/module/udp-zivpn-linux-arm64"
         echo -e "${C_BLUE}ℹ️ Detected ARM64 architecture.${C_RESET}"
     elif [[ "$arch" == "armv7l" || "$arch" == "arm" ]]; then
-         zivpn_url="https://github.com/zahidbd2/udp-zivpn/releases/download/udp-zivpn_1.4.9/udp-zivpn-linux-arm"
+         zivpn_url="https://raw.githubusercontent.com/bike28/manager/main/module/udp-zivpn-linux-arm"
          echo -e "${C_BLUE}ℹ️ Detected ARM architecture.${C_RESET}"
     else
         echo -e "${C_RED}❌ Unsupported architecture: $arch${C_RESET}"
