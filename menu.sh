@@ -68,8 +68,6 @@ LOGIN_INFO_SCRIPT="/usr/local/bin/amokhantech-login-info.sh"
 SSHD_FF_CONFIG="/etc/ssh/sshd_config.d/amokhantech.conf"
 
 # --- Web Control Panel Variables ---
-# panel.py and index.html are managed as SEPARATE files (not embedded in this script).
-# Place them in one of the locations checked by _webpanel_find_source_file() before installing.
 WEBPANEL_DIR="$DB_DIR/panel"
 WEBPANEL_PY="$WEBPANEL_DIR/panel.py"
 WEBPANEL_HTML="$WEBPANEL_DIR/index.html"
@@ -77,6 +75,7 @@ WEBPANEL_CONF="$DB_DIR/panel.conf"
 WEBPANEL_SERVICE_FILE="/etc/systemd/system/amokhantech-panel.service"
 WEBPANEL_SERVICE_NAME="amokhantech-panel"
 WEBPANEL_PORT="44380"
+PANEL_REPO_BASE="https://raw.githubusercontent.com//bike28/manager/main/panel"
 
 # --- ZiVPN Variables ---
 ZIVPN_DIR="/etc/zivpn"
@@ -87,7 +86,7 @@ ZIVPN_CERT_FILE="$ZIVPN_DIR/zivpn.crt"
 ZIVPN_KEY_FILE="$ZIVPN_DIR/zivpn.key"
 
 DESEC_TOKEN="V55cFY8zTictLCPfviiuX5DHjs15"
-DESEC_DOMAIN="manager.amokhantech.qzz.io"
+DESEC_DOMAIN="manager.firewallfalcon.qzz.io"
 
 SELECTED_USER=""
 UNINSTALL_MODE="interactive"
