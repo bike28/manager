@@ -69,11 +69,11 @@ LOGIN_INFO_SCRIPT="/usr/local/bin/firewallfalcon-login-info.sh"
 SSHD_FF_CONFIG="/etc/ssh/sshd_config.d/firewallfalcon.conf"
 
 # --- Web Panel Variables ---
-PANEL_SCRIPT="/usr/local/bin/bike28/manager-panel.py"
+PANEL_SCRIPT="/usr/local/bin/firewallfalcon-panel.py"
 PANEL_HTML_DIR="$DB_DIR/panel"
 PANEL_HTML_FILE="$DB_DIR/panel/index.html"
 PANEL_CONF="$DB_DIR/panel.conf"
-PANEL_SERVICE_FILE="/etc/systemd/system/bike28/manager-panel.service"
+PANEL_SERVICE_FILE="/etc/systemd/system/firewallfalcon-panel.service"
 PANEL_PORT=44380
 PANEL_REPO_BASE="https://raw.githubusercontent.com/bike28/manager/main/panel"
 
@@ -2233,10 +2233,10 @@ install_udp_custom() {
     arch=$(uname -m)
     local binary_url=""
     if [[ "$arch" == "x86_64" ]]; then
-        binary_url="https://codeberg.org/firewallfalcons/FirewallFalcon-Manager/raw/branch/main/udp/udp-custom-linux-amd64"
+        binary_url="https://raw.githubusercontent.com/bike28/manager/main/udp/udp-custom-linux-amd64"
         echo -e "${C_BLUE}ℹ️ Detected x86_64 (amd64) architecture.${C_RESET}"
     elif [[ "$arch" == "aarch64" || "$arch" == "arm64" ]]; then
-        binary_url="https://codeberg.org/firewallfalcons/FirewallFalcon-Manager/raw/branch/main/udp/udp-custom-linux-arm"
+        binary_url="https://raw.githubusercontent.com/bike28/manager/main/udp/udp-custom-linux-arm"
         echo -e "${C_BLUE}ℹ️ Detected ARM64 architecture.${C_RESET}"
     else
         echo -e "\n${C_RED}❌ Unsupported architecture: $arch. Cannot install udp-custom.${C_RESET}"
@@ -2255,7 +2255,7 @@ install_udp_custom() {
 
     echo -e "\n${C_GREEN}📦 Setting up udpgw helper...${C_RESET}"
     if [[ "$arch" == "x86_64" ]]; then
-        wget -q --show-progress -O "$UDPGW_BINARY" "https://raw.githubusercontent.com/http-custom/udp-custom/main/module/udpgw"
+        wget -q --show-progress -O "$UDPGW_BINARY" "https://raw.githubusercontent.com/bike28/manager/main/module/udpgw"
         if [ $? -ne 0 ]; then
             echo -e "\n${C_RED}❌ Failed to download the udpgw helper binary.${C_RESET}"
             rm -rf "$UDP_CUSTOM_DIR"
