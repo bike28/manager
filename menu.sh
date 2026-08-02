@@ -69,13 +69,13 @@ LOGIN_INFO_SCRIPT="/usr/local/bin/firewallfalcon-login-info.sh"
 SSHD_FF_CONFIG="/etc/ssh/sshd_config.d/firewallfalcon.conf"
 
 # --- Web Panel Variables ---
-PANEL_SCRIPT="/usr/local/bin/firewallfalcon-panel.py"
+PANEL_SCRIPT="/usr/local/bin/bike28/manager-panel.py"
 PANEL_HTML_DIR="$DB_DIR/panel"
 PANEL_HTML_FILE="$DB_DIR/panel/index.html"
 PANEL_CONF="$DB_DIR/panel.conf"
-PANEL_SERVICE_FILE="/etc/systemd/system/firewallfalcon-panel.service"
+PANEL_SERVICE_FILE="/etc/systemd/system/bike28/manager-panel.service"
 PANEL_PORT=44380
-PANEL_REPO_BASE="https://codeberg.org/firewallfalcons/FirewallFalcon-Manager/raw/branch/main/panel"
+PANEL_REPO_BASE="https://raw.githubusercontent.com/bike28/manager/main/panel"
 
 # --- ZiVPN Variables ---
 ZIVPN_DIR="/etc/zivpn"
