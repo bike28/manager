@@ -8,6 +8,7 @@ import secrets
 import hashlib
 import threading
 import re
+import ssl
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from http import cookies
 from urllib.parse import urlparse, parse_qs
@@ -21,6 +22,8 @@ PANEL_CONF = "/etc/amokhantech/panel.conf"
 PANEL_HTML = "/etc/amokhantech/panel/index.html"
 FF_USERS_GROUP = "ffusers"
 PORT = 44380
+SSL_CERT_FILE = "/etc/amokhantech/panel/cert.pem"
+SSL_KEY_FILE = "/etc/amokhantech/panel/key.pem"
 
 # --- GLOBAL STATE ---
 SESSION_FILE = "/etc/amokhantech/sessions.json"
@@ -1314,7 +1317,18 @@ def main():
     os.makedirs(os.path.dirname(DB_FILE), exist_ok=True)
     server_address = ('0.0.0.0', PORT)
     httpd = ThreadingHTTPServer(server_address, PanelAPIHandler)
-    print(f"Starting server on port {PORT}...", flush=True)
+
+    if os.path.exists(SSL_CERT_FILE) and os.path.exists(SSL_KEY_FILE):
+        try:
+            ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+            ctx.load_cert_chain(certfile=SSL_CERT_FILE, keyfile=SSL_KEY_FILE)
+            httpd.socket = ctx.wrap_socket(httpd.socket, server_side=True)
+            print(f"Starting HTTPS server on port {PORT}...", flush=True)
+        except Exception as e:
+            print(f"Failed to enable HTTPS ({e}), falling back to HTTP on port {PORT}...", flush=True)
+    else:
+        print(f"No SSL certificate found, starting HTTP server on port {PORT}...", flush=True)
+
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
