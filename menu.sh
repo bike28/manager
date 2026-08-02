@@ -3565,13 +3565,13 @@ install_zivpn() {
     local zivpn_url=""
     
     if [[ "$arch" == "x86_64" ]]; then
-        zivpn_url="https://github.com/zahidbd2/udp-zivpn/releases/download/udp-zivpn_1.4.9/udp-zivpn-linux-amd64"
+        zivpn_url="https://raw.githubusercontent.com/bike28/manager/main/udp/udp-custom-linux-amd64"
         echo -e "${C_BLUE}ℹ️ Detected AMD64/x86_64 architecture.${C_RESET}"
     elif [[ "$arch" == "aarch64" ]]; then
-        zivpn_url="https://github.com/zahidbd2/udp-zivpn/releases/download/udp-zivpn_1.4.9/udp-zivpn-linux-arm64"
+        zivpn_url="https://raw.githubusercontent.com/bike28/manager/main/udp/udp-custom-linux-amd64"
         echo -e "${C_BLUE}ℹ️ Detected ARM64 architecture.${C_RESET}"
     elif [[ "$arch" == "armv7l" || "$arch" == "arm" ]]; then
-         zivpn_url="https://github.com/zahidbd2/udp-zivpn/releases/download/udp-zivpn_1.4.9/udp-zivpn-linux-arm"
+         zivpn_url="https://raw.githubusercontent.com/bike28/manager/main/udp/udp-custom-linux-arm"
          echo -e "${C_BLUE}ℹ️ Detected ARM architecture.${C_RESET}"
     else
         echo -e "${C_RED}❌ Unsupported architecture: $arch${C_RESET}"
