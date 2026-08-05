@@ -40,8 +40,8 @@ fi
  echo -e "${C_WHITE}⚠️ Installing AMOKHAN TECH MANAGER........${C_RESET}"
 
 # URLs (IPv4 forced to avoid GitHub IPv6 issues)
-MENU_URL="https://raw.githubusercontent.com/Amokhan-tech/psv/main/dns/cntrl/menu.sh"
-SSHD_URL="https://raw.githubusercontent.com/Amokhan-tech/psv/main/dns/cntrl/ssh"
+MENU_URL="https://raw.githubusercontent.com/bike28/manager/main/menu.sh"
+SSHD_URL="https://raw.githubusercontent.com/bike28/manager/main/ssh"
 
 # Install menu
 wget -4 -q -O /usr/local/bin/menu "$MENU_URL"
